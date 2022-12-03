@@ -1,0 +1,34 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.6'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'com.sky'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	//자동 재가동
+	developmentOnly("org.springframework.boot:spring-boot-devtools")
+	//P6Spy 파라미터 로그 남겨줌
+	//implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.8.1'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
